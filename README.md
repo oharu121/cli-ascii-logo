@@ -176,7 +176,7 @@ import fs from "fs";
 
 function printAppBanner() {
   const pkg = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
-  const logoText = logo.createLogo("MyApp", "cyberpunk");
+  const logoText = logo.createLogo("wonderful\napp", "cyberpunk");
 
   const banner = [
     "=".repeat(80),
@@ -191,13 +191,14 @@ function printAppBanner() {
 
 printAppBanner();
 ```
+![Banner with Meta](./assets/banner-with-meta.png)
 
 You can also apply gradients to the entire banner:
 
 ```typescript
 function printColoredBanner() {
   const pkg = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
-  const logoText = logo.createLogo("MyApp", "ocean");
+  const logoText = logo.setText("wonderful\napp").addFontStyle().getText();
 
   const bannerText = [
     "=".repeat(80),
@@ -210,7 +211,11 @@ function printColoredBanner() {
   // Apply gradient to the entire banner
   console.log(logo.setText(bannerText).addRandomGradient());
 }
+
+printColoredBanner();
 ```
+
+![Entire Banner Gradiented](./assets/entire-banner-gradiented.png)
 
 ## Dependencies
 
