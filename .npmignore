@@ -1,0 +1,9 @@
+*.ts
+!*.d.ts
+tsconfig.json
+.gitignore
+node_modules/
+src/
+.vscode/
+.git/
+*.log

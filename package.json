@@ -1,0 +1,53 @@
+{
+  "name": "cli-ascii-logo",
+  "version": "1.0.0",
+  "description": "Create beautiful ASCII art logos with gradient colors for your CLI applications",
+  "main": "dist/Logo.js",
+  "types": "dist/Logo.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "example": "tsx example.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "ascii",
+    "art",
+    "logo",
+    "gradient",
+    "figlet",
+    "terminal",
+    "banner",
+    "ascii-art",
+    "cli-tool"
+  ],
+  "author": "oharu121 <jefflin1201@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oharu121/cli-ascii-logo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oharu121/cli-ascii-logo/issues"
+  },
+  "homepage": "https://github.com/oharu121/cli-ascii-logo#readme",
+  "dependencies": {
+    "figlet": "^1.7.0",
+    "gradient-string": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.8",
+    "@types/gradient-string": "^1.1.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
