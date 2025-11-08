@@ -28,6 +28,7 @@ console.log(logo.createRandomLogo("Surprise!"));
 ### Simple Methods
 
 #### `createLogo(text: string, palette?: PaletteName): string`
+
 Create a logo with a single call.
 
 ```typescript
@@ -35,6 +36,7 @@ logo.createLogo("MyApp", "sunset");
 ```
 
 #### `createRandomLogo(text: string): string`
+
 Create a logo with a random gradient palette.
 
 ```typescript
@@ -46,10 +48,7 @@ logo.createRandomLogo("Lucky");
 For more control, use the fluent builder API:
 
 ```typescript
-logo
-  .setText("MyApp")
-  .addFontStyle("ANSI Shadow", 120)
-  .build("ocean");
+logo.setText("MyApp").addFontStyle("ANSI Shadow", 120).build("ocean");
 ```
 
 #### Methods
@@ -65,31 +64,53 @@ logo
 ### Custom Gradients
 
 **Classic & Popular:**
+
 - `sunset` - Warm orange to red (default)
 - `ocean` - Deep blue to purple
 - `fire` - Bold red to pink
 - `forest` - Teal to green
 - `gold` - Orange to yellow
+- `copper` - Metallic bronze
+
+![Popular Gradients](./assets/popular-gradients.png)
 
 **Cool Tones:**
+
 - `blue` - Bright blue gradient
 - `mint` - Cyan to blue
+- `aqua` - Turquoise tones
 - `ice` - Icy white-blue tones
 
+![Cool Gradients](./assets/cool-gradients.png)
+
 **Warm Tones:**
+
 - `lava` - Hot reds and oranges
+- `volcano` - Dark red to gold
 - `coral` - Soft pink gradient
+- `cherry` - Pink-red
+
+![Warm Gradients](./assets/warm-gradients.png)
 
 **Vibrant & Modern:**
+
 - `cyberpunk` - Neon pink-cyan
 - `neon` - Radioactive green
 - `aurora` - Northern lights effect
+- `lavender` - Soft purples
+- `emerald` - Northern lights effect
+
+![Vibrant Gradients](./assets/vibrant-gradients.png)
 
 **Special Effects:**
+
 - `matrix` - Classic terminal green
 - `nebula` - Purple to pink space
 
+![Special Gradients](./assets/special-gradients.png)
+
 ### Preset Gradients
+
 From the `gradient-string` library: `cristal`, `teen`, `mind`, `morning`, `vice`, `passion`, `fruit`, `instagram`, `atlas`, `retro`, `summer`, `pastel`, `rainbow`
 
 You can get the list programmatically:
@@ -108,7 +129,7 @@ Full TypeScript support with exported types:
 import logo, {
   PaletteName,
   PALETTE_NAMES,
-  CUSTOM_GRADIENTS
+  CUSTOM_GRADIENTS,
 } from "cli-ascii-logo";
 
 const palette: PaletteName = "sunset";
@@ -129,10 +150,7 @@ console.log(logo.createLogo("Welcome", "rainbow"));
 ```typescript
 import logo from "cli-ascii-logo";
 
-const myLogo = logo
-  .setText("MyApp")
-  .addFontStyle("ANSI Shadow")
-  .build("ocean");
+const myLogo = logo.setText("MyApp").addFontStyle("ANSI Shadow").build("ocean");
 
 console.log(myLogo);
 ```
@@ -142,7 +160,7 @@ console.log(myLogo);
 ```typescript
 import logo, { PALETTE_NAMES } from "cli-ascii-logo";
 
-PALETTE_NAMES.forEach(palette => {
+PALETTE_NAMES.forEach((palette) => {
   console.log(`\n--- ${palette} ---`);
   console.log(logo.createLogo("Logo", palette));
 });
