@@ -8,6 +8,64 @@ Create beautiful ASCII art logos with gradient colors for your CLI applications.
 npm install cli-ascii-logo
 ```
 
+## Usage
+
+### CLI Usage
+
+Use directly with npx (no installation required):
+
+```bash
+npx cli-ascii-logo "Hello World"
+```
+
+Or install globally:
+
+```bash
+npm install -g cli-ascii-logo
+cli-ascii-logo "My App"
+```
+
+#### CLI Options
+
+```bash
+# Basic usage with default gradient (sunset)
+cli-ascii-logo "Hello World"
+
+# Use a specific gradient palette
+cli-ascii-logo "Hello World" --palette cyberpunk
+cli-ascii-logo "Hello World" -p ocean
+
+# Use a random gradient
+cli-ascii-logo "Hello World" --random
+cli-ascii-logo "Hello World" -r
+
+# List all available palettes
+cli-ascii-logo --list
+cli-ascii-logo -l
+
+# Show help
+cli-ascii-logo --help
+cli-ascii-logo -h
+```
+
+#### CLI Examples
+
+```bash
+# Create a logo with the sunset gradient
+npx cli-ascii-logo "MyApp"
+
+# Create a logo with cyberpunk theme
+npx cli-ascii-logo "CLI Tool" -p cyberpunk
+
+# Generate with random colors
+npx cli-ascii-logo "Surprise" --random
+
+# See all available gradient options
+npx cli-ascii-logo --list
+```
+
+### Programmatic Usage
+
 ## Quick Start
 
 ```typescript

@@ -4,6 +4,9 @@
   "description": "Create beautiful ASCII art logos with gradient colors for your CLI applications",
   "main": "dist/Logo.js",
   "types": "dist/Logo.d.ts",
+  "bin": {
+    "cli-ascii-logo": "dist/cli.js"
+  },
   "files": [
     "dist",
     "README.md",
@@ -14,6 +17,7 @@
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "example": "tsx example.ts",
+    "cli": "tsx cli.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

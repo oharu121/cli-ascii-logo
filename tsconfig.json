@@ -16,6 +16,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "include": ["Logo.ts"],
+  "include": ["Logo.ts", "cli.ts"],
   "exclude": ["node_modules", "dist"]
 }
