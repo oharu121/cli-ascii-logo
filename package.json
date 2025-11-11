@@ -1,14 +1,23 @@
 {
   "name": "cli-ascii-logo",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Create beautiful ASCII art logos with gradient colors for your CLI applications",
-  "main": "dist/Logo.js",
-  "types": "dist/Logo.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "bin": {
     "cli-ascii-logo": "dist/cli.js"
   },
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
   "files": [
     "dist",
+    "index.js",
+    "index.d.ts",
     "README.md",
     "LICENSE",
     "assets"
