@@ -64,6 +64,15 @@ type CustomGradient = keyof typeof CUSTOM_GRADIENTS;
 type PresetGradient = keyof typeof PRESET_GRADIENTS;
 type PaletteName = (typeof PALETTE_NAMES)[number];
 
+type AnimationType = "fade-in" | "slide-in" | "typing";
+
+interface DisplayOptions {
+  gradient?: PaletteName;
+  animation?: AnimationType;
+  duration?: number;
+  clearBefore?: boolean;
+}
+
 
 class Logo {
   private text: string = "";
@@ -138,10 +147,160 @@ class Logo {
   public build(palette: PaletteName = DEFAULT_PALETTE): string {
     return this.addGradient(palette);
   }
+
+  /**
+   * Display the logo with optional animation and gradient.
+   * This is a terminal method that outputs to console.
+   */
+  public async display(options: DisplayOptions = {}): Promise<void> {
+    const {
+      gradient: palette = DEFAULT_PALETTE,
+      animation,
+      duration = 2000,
+      clearBefore = true,
+    } = options;
+
+    // Apply gradient
+    const coloredLogo = this.addGradient(palette);
+
+    // Clear console if requested
+    if (clearBefore) {
+      console.clear();
+    }
+
+    // If no animation, just print it
+    if (!animation) {
+      console.log(coloredLogo);
+      return;
+    }
+
+    // Reserve space for the logo immediately
+    const lines = coloredLogo.split("\n");
+    const lineCount = lines.length;
+
+    // Print empty lines to reserve space
+    console.log("\n".repeat(lineCount - 1));
+
+    // Move cursor back to the start of reserved space
+    process.stdout.write(`\x1b[${lineCount}A`);
+
+    // Apply animation
+    switch (animation) {
+      case "fade-in":
+        await this.animateFadeIn(coloredLogo, duration, lineCount);
+        break;
+      case "slide-in":
+        await this.animateSlideIn(coloredLogo, duration, lineCount);
+        break;
+      case "typing":
+        await this.animateTyping(coloredLogo, duration, lineCount);
+        break;
+    }
+  }
+
+  private async animateFadeIn(text: string, duration: number, lineCount: number): Promise<void> {
+    const lines = text.split("\n");
+    const delayPerLine = duration / lines.length;
+
+    for (let i = 0; i < lines.length; i++) {
+      // Clear the current line and write the new one
+      process.stdout.write("\x1b[2K"); // Clear entire line
+      process.stdout.write(lines[i]);
+
+      // Move to next line (except for the last one)
+      if (i < lines.length - 1) {
+        process.stdout.write("\n");
+      }
+
+      await this.sleep(delayPerLine);
+    }
+
+    // Move cursor to end
+    process.stdout.write("\n");
+  }
+
+  private async animateSlideIn(text: string, duration: number, lineCount: number): Promise<void> {
+    const lines = text.split("\n");
+    const maxLineLength = Math.max(...lines.map(line => this.stripAnsi(line).length));
+
+    // Calculate frames for smooth animation
+    const fps = 30; // Frames per second
+    const totalFrames = Math.floor((duration / 1000) * fps);
+    const frameDelay = duration / totalFrames;
+
+    // Animate from right to left
+    for (let frame = 0; frame <= totalFrames; frame++) {
+      // Calculate offset (starts from maxLineLength, ends at 0)
+      const progress = frame / totalFrames;
+      const offset = Math.floor(maxLineLength * (1 - progress));
+
+      // Move cursor to start of reserved area
+      if (frame > 0) {
+        process.stdout.write(`\x1b[${lineCount}A`); // Move cursor up
+      }
+
+      // Draw each line with the current offset
+      for (let i = 0; i < lines.length; i++) {
+        process.stdout.write("\x1b[2K"); // Clear entire line
+
+        // Add padding to create sliding effect
+        const padding = " ".repeat(offset);
+        process.stdout.write(padding + lines[i]);
+
+        // Move to next line (except for the last one)
+        if (i < lines.length - 1) {
+          process.stdout.write("\n");
+        }
+      }
+
+      if (frame < totalFrames) {
+        await this.sleep(frameDelay);
+      }
+    }
+
+    // Move cursor to end
+    process.stdout.write("\n");
+  }
+
+  // Helper to strip ANSI color codes for accurate length calculation
+  private stripAnsi(str: string): string {
+    return str.replace(/\x1b\[[0-9;]*m/g, "");
+  }
+
+  private async animateTyping(text: string, duration: number, lineCount: number): Promise<void> {
+    const lines = text.split("\n");
+    const totalChars = text.length;
+    const delayPerChar = duration / totalChars;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+
+      // Clear the current line
+      process.stdout.write("\x1b[2K");
+
+      // Type out each character
+      for (const char of line) {
+        process.stdout.write(char);
+        await this.sleep(delayPerChar);
+      }
+
+      // Move to next line (except for the last one)
+      if (i < lines.length - 1) {
+        process.stdout.write("\n");
+      }
+    }
+
+    // Move cursor to end
+    process.stdout.write("\n");
+  }
+
+  private sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 }
 
 // Export types for TypeScript users
-export type { PaletteName, CustomGradient, PresetGradient };
+export type { PaletteName, CustomGradient, PresetGradient, AnimationType, DisplayOptions };
 
 // Export constants for discovering available palettes
 export { PALETTE_NAMES, CUSTOM_GRADIENTS, PRESET_GRADIENTS };

@@ -11,7 +11,9 @@ export {
   PRESET_GRADIENTS,
   type PaletteName,
   type CustomGradient,
-  type PresetGradient
+  type PresetGradient,
+  type AnimationType,
+  type DisplayOptions
 } from './dist/Logo';
 
 export { default as Logo } from './dist/Logo';
