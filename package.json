@@ -53,7 +53,7 @@
   "homepage": "https://github.com/oharu121/cli-ascii-logo#readme",
   "dependencies": {
     "figlet": "^1.7.0",
-    "gradient-string": "^2.0.2"
+    "gradient-string": "^3.0.0"
   },
   "devDependencies": {
     "@types/figlet": "^1.5.8",
