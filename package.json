@@ -1,6 +1,6 @@
 {
   "name": "cli-ascii-logo",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Create beautiful ASCII art logos with gradient colors for your CLI applications",
   "type": "module",
   "main": "index.js",
