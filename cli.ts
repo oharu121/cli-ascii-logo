@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import logo, { PALETTE_NAMES, PaletteName } from "./Logo";
+import logo, { PALETTE_NAMES, PaletteName } from "./Logo.js";
 
 const args = process.argv.slice(2);
 

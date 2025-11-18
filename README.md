@@ -16,6 +16,8 @@ Create beautiful ASCII art logos with gradient colors for your CLI applications.
 npm install cli-ascii-logo
 ```
 
+> **Note:** Version 2.1.0+ uses ES modules (ESM). If you need CommonJS support, use version 2.0.x or earlier.
+
 ## Usage
 
 ### CLI Usage
@@ -284,10 +286,87 @@ printColoredBanner();
 
 ![Entire Banner Gradiented](./assets/entire-banner-gradiented.png)
 
+## Advanced Features
+
+### Animation Support
+
+Display logos with animations:
+
+```typescript
+import logo from 'cli-ascii-logo';
+
+// Display with fade-in animation
+await logo.setText('MyApp').addFontStyle().display({
+  gradient: 'cyberpunk',
+  animation: 'fade-in',
+  duration: 2000,
+  clearBefore: true,
+});
+
+// Other animation types: 'slide-in', 'typing'
+await logo.setText('Hello').addFontStyle().display({
+  animation: 'typing',
+  duration: 1500,
+});
+```
+
+## Development
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with UI
+npm run test:ui
+
+# Generate coverage report
+npm run test:coverage
+```
+
+### Code Quality
+
+```bash
+# Lint code
+npm run lint
+
+# Auto-fix linting issues
+npm run lint:fix
+
+# Format code with Prettier
+npm run format
+
+# Check formatting
+npm run format:check
+```
+
+### Building
+
+```bash
+# Build TypeScript to dist/
+npm run build
+```
+
 ## Dependencies
 
 - [figlet](https://www.npmjs.com/package/figlet) - ASCII art text generation
 - [gradient-string](https://www.npmjs.com/package/gradient-string) - Gradient color effects
+
+## Dev Dependencies
+
+- TypeScript 5.3+
+- Vitest for testing
+- ESLint 9 with flat config
+- Prettier for code formatting
+
+## Requirements
+
+- Node.js >= 14.0.0
+- ES Module support (ESM)
 
 ## License
 
@@ -295,4 +374,11 @@ MIT
 
 ## Contributing
 
-Contributions welcome! Please open an issue or PR on GitHub.
+Contributions welcome! Please ensure:
+
+1. All tests pass (`npm test`)
+2. Code is linted (`npm run lint`)
+3. Code is formatted (`npm run format`)
+4. Add tests for new features
+
+Open an issue or PR on GitHub.

@@ -2,7 +2,7 @@ import figlet from "figlet";
 import gradient from "gradient-string";
 
 const DEFAULT_PALETTE: PaletteName = "sunset";
-const DEFAULT_FONT: figlet.FontName = "ANSI Shadow";
+const DEFAULT_FONT: figlet.Fonts = "ANSI Shadow";
 const DEFAULT_TEXT_WIDTH = 100;
 
 const PRESET_GRADIENTS = {
@@ -103,7 +103,7 @@ class Logo {
   }
 
   public addFontStyle(
-    font: figlet.FontName = DEFAULT_FONT,
+    font: figlet.Fonts = DEFAULT_FONT,
     width: number = DEFAULT_TEXT_WIDTH
   ): this {
     this.text = figlet.textSync(this.text, {
@@ -187,18 +187,18 @@ class Logo {
     // Apply animation
     switch (animation) {
       case "fade-in":
-        await this.animateFadeIn(coloredLogo, duration, lineCount);
+        await this.animateFadeIn(coloredLogo, duration);
         break;
       case "slide-in":
         await this.animateSlideIn(coloredLogo, duration, lineCount);
         break;
       case "typing":
-        await this.animateTyping(coloredLogo, duration, lineCount);
+        await this.animateTyping(coloredLogo, duration);
         break;
     }
   }
 
-  private async animateFadeIn(text: string, duration: number, lineCount: number): Promise<void> {
+  private async animateFadeIn(text: string, duration: number): Promise<void> {
     const lines = text.split("\n");
     const delayPerLine = duration / lines.length;
 
@@ -264,10 +264,11 @@ class Logo {
 
   // Helper to strip ANSI color codes for accurate length calculation
   private stripAnsi(str: string): string {
+    // eslint-disable-next-line no-control-regex
     return str.replace(/\x1b\[[0-9;]*m/g, "");
   }
 
-  private async animateTyping(text: string, duration: number, lineCount: number): Promise<void> {
+  private async animateTyping(text: string, duration: number): Promise<void> {
     const lines = text.split("\n");
     const totalChars = text.length;
     const delayPerChar = duration / totalChars;
