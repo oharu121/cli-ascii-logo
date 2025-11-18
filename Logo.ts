@@ -5,7 +5,7 @@ const DEFAULT_PALETTE: PaletteName = "sunset";
 const DEFAULT_FONT: figlet.Fonts = "ANSI Shadow";
 const DEFAULT_TEXT_WIDTH = 100;
 
-const PRESET_GRADIENTS = {
+const PRESET_GRADIENTS: Record<string, ReturnType<typeof gradient>> = {
   cristal: gradient.cristal,
   teen: gradient.teen,
   mind: gradient.mind,
