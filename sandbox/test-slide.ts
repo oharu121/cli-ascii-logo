@@ -1,4 +1,4 @@
-import logo from "./Logo";
+import logo from "../Logo";
 
 async function testSlide() {
   console.log("Testing REAL slide-in animation with motion:\n");
