@@ -3,7 +3,6 @@
 [![npm version](https://badge.fury.io/js/cli-ascii-logo.svg)](https://badge.fury.io/js/cli-ascii-logo)
 ![License](https://img.shields.io/npm/l/cli-ascii-logo)
 ![Types](https://img.shields.io/npm/types/cli-ascii-logo)
-
 ![NPM Downloads](https://img.shields.io/npm/dw/cli-ascii-logo)
 ![Last Commit](https://img.shields.io/github/last-commit/oharu121/cli-ascii-logo)
 ![GitHub Stars](https://img.shields.io/github/stars/oharu121/cli-ascii-logo?style=social)
