@@ -35,7 +35,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,js,json,md}\""
+    "format:check": "prettier --check \"**/*.{ts,js,json,md}\"",
+    "sync": "git pull --rebase && npm install && npm test",
+    "sync:quick": "git pull --rebase && npm install",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "cli",
