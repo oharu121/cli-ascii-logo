@@ -1,11 +1,25 @@
 version: 2
 updates:
-  # Enable version updates for npm
+  # Check for npm dependency updates
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
-    commit-message:
-      prefix: "chore"
-      include: "scope"
+    labels:
+      - "dependencies"
+    # Group all development dependencies together
+    groups:
+       dev-dependencies:
+          dependency-type: "development"
+
+  # Check for GitHub Actions updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Group all actions together
+    groups:
+       actions:
+          patterns:
+            - "*"
