@@ -6,14 +6,7 @@ import prettierConfig from 'eslint-config-prettier';
 export default [
   // Ignore patterns (replaces .eslintignore)
   {
-    ignores: [
-      'dist/**',
-      'node_modules/**',
-      'coverage/**',
-      '**/*.d.ts',
-      'sandbox/**',
-      'docs/**',
-    ],
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**', '**/*.d.ts', 'sandbox/**', 'docs/**'],
   },
 
   // Base config for all files
@@ -44,11 +37,38 @@ export default [
     },
     rules: {
       ...tseslint.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': ['error', {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
+    },
+  },
+
+  // JavaScript/MJS files - Node.js scripts
+  {
+    files: ['**/*.js', '**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+      },
+    },
+    rules: {
+      'no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 
