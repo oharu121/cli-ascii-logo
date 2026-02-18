@@ -25,22 +25,22 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build && npm run test:all",
+    "prepublishOnly": "pnpm run build && pnpm run test:all",
     "example": "tsx example.ts",
     "cli": "tsx cli.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "test:all": "npm run typecheck && npm run lint && npm run test",
+    "test:all": "pnpm run typecheck && pnpm run lint && pnpm run test",
     "release": "node scripts/release.mjs",
     "token": "node scripts/get-token.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",
     "format:check": "prettier --check \"**/*.{ts,js,json,md}\"",
-    "sync": "git pull --rebase && npm install && npm test",
-    "sync:quick": "git pull --rebase && npm install",
+    "sync": "git pull --rebase && pnpm install && pnpm test",
+    "sync:quick": "git pull --rebase && pnpm install",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
@@ -87,6 +87,7 @@
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "*"
   },
+  "packageManager": "pnpm@10.21.0",
   "engines": {
     "node": ">=14.0.0"
   }

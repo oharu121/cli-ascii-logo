@@ -12,7 +12,7 @@ Create beautiful ASCII art logos with gradient colors for your CLI applications.
 ## Installation
 
 ```bash
-npm install cli-ascii-logo
+pnpm add cli-ascii-logo
 ```
 
 > **Note:** Version 2.1.0+ uses ES modules (ESM). If you need CommonJS support, use version 2.0.x or earlier.
@@ -30,7 +30,7 @@ npx cli-ascii-logo "Hello World"
 Or install globally:
 
 ```bash
-npm install -g cli-ascii-logo
+pnpm add -g cli-ascii-logo
 cli-ascii-logo "My App"
 ```
 
@@ -315,39 +315,39 @@ await logo.setText('Hello').addFontStyle().display({
 
 ```bash
 # Run all tests
-npm test
+pnpm test
 
 # Run tests in watch mode
-npm run test:watch
+pnpm run test:watch
 
 # Run tests with UI
-npm run test:ui
+pnpm run test:ui
 
 # Generate coverage report
-npm run test:coverage
+pnpm run test:coverage
 ```
 
 ### Code Quality
 
 ```bash
 # Lint code
-npm run lint
+pnpm run lint
 
 # Auto-fix linting issues
-npm run lint:fix
+pnpm run lint:fix
 
 # Format code with Prettier
-npm run format
+pnpm run format
 
 # Check formatting
-npm run format:check
+pnpm run format:check
 ```
 
 ### Building
 
 ```bash
 # Build TypeScript to dist/
-npm run build
+pnpm run build
 ```
 
 ## Dependencies
@@ -375,9 +375,9 @@ MIT
 
 Contributions welcome! Please ensure:
 
-1. All tests pass (`npm test`)
-2. Code is linted (`npm run lint`)
-3. Code is formatted (`npm run format`)
+1. All tests pass (`pnpm test`)
+2. Code is linted (`pnpm run lint`)
+3. Code is formatted (`pnpm run format`)
 4. Add tests for new features
 
 Open an issue or PR on GitHub.
