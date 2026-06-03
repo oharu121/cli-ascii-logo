@@ -57,7 +57,7 @@ importers:
     optionalDependencies:
       '@rollup/rollup-linux-x64-gnu':
         specifier: '*'
-        version: 4.60.4
+        version: 4.61.0
 
 packages:
 
@@ -546,11 +546,6 @@ packages:
   '@rollup/rollup-linux-s390x-gnu@4.61.0':
     resolution: {integrity: sha512-Atk0aSIk5Zx2Wuh9dgRQgLP0Koc8hOeYpbWryMXyk8G8/HmPkwPPkMqIIDhrXHHYqfUzSJA/I7IWSBv8xSmRBA==}
     cpu: [s390x]
-    os: [linux]
-
-  '@rollup/rollup-linux-x64-gnu@4.60.4':
-    resolution: {integrity: sha512-Boiz5+MsaROEWDf+GGEwF8VMHGhlUoQMtIPjOgA5fv4osupqTVnJteQNKJwUcnUog2G55jYXH7KZFFiJe0TEzQ==}
-    cpu: [x64]
     os: [linux]
 
   '@rollup/rollup-linux-x64-gnu@4.61.0':
@@ -1504,9 +1499,6 @@ snapshots:
     optional: true
 
   '@rollup/rollup-linux-s390x-gnu@4.61.0':
-    optional: true
-
-  '@rollup/rollup-linux-x64-gnu@4.60.4':
     optional: true
 
   '@rollup/rollup-linux-x64-gnu@4.61.0':
