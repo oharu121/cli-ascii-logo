@@ -10,7 +10,7 @@ importers:
     dependencies:
       figlet:
         specifier: ^1.7.0
-        version: 1.11.4
+        version: 1.12.0
       gradient-string:
         specifier: ^3.0.0
         version: 3.0.0
@@ -1015,8 +1015,8 @@ packages:
       picomatch:
         optional: true
 
-  figlet@1.11.4:
-    resolution: {integrity: sha512-ZU41480OncL+NVLQrT0GVnbO0COL24sLSrzksioDgunmdJNYEUxhJJZ4Y3x1csN8XXqN5OcCZTLG8lKdquNyfQ==}
+  figlet@1.12.0:
+    resolution: {integrity: sha512-Ith3WsUi0N/EqGt+0/F6XnWhT04sohhH2tT0Dq7GdUmWbMTIoCbg2Jq9qKggmTO62ST5kRCfB311EmIMbizGyA==}
     engines: {node: '>= 17.0.0'}
     hasBin: true
 
@@ -2081,7 +2081,7 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.7
 
-  figlet@1.11.4:
+  figlet@1.12.0:
     dependencies:
       commander: 14.0.3
 
